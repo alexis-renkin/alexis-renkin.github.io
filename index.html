@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — [Prénom Nom] | HELMo Marketing Bloc 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:     #ffffff;
+  --bg2:    #f7f7f7;
+  --border: #e8e8e8;
+  --text:   #111111;
+  --muted:  #888888;
+  --muted2: #bbbbbb;
+  --num:    #dddddd;
+  --serif:  'Syne', sans-serif;
+  --sans:   'Inter', system-ui, sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; overflow:hidden; }
+body { font-family:var(--sans); background:var(--bg); color:var(--text); font-size:15px; line-height:1.65; display:flex; flex-direction:column; }
+
+/* ── TOPNAV ── */
+.topnav {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.nav-logo span { color: var(--muted); font-weight: 400; font-size: 0.75rem; margin-left: 0.6rem; letter-spacing: 0.05em; }
+
+.nav-links { display:flex; align-items:center; gap:2px; }
+
+.nav-links button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  padding: 0.45rem 0.85rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links button:hover { background: var(--bg2); color: var(--text); }
+.nav-links button.active { background: var(--text); color: #fff; }
+
+.nav-num {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.45;
+}
+.nav-links button.active .nav-num { opacity: 0.6; }
+
+.nav-date {
+  font-size: 0.68rem;
+  color: var(--muted2);
+  white-space: nowrap;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+  margin-left: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── MAIN ── */
+.main { flex:1; overflow-y:auto; }
+
+/* ── PAGES ── */
+.page {
+  display: none;
+  min-height: calc(100vh - 60px);
+  padding: 5rem;
+  max-width: 860px;
+  animation: up 0.25s ease both;
+}
+.page.active { display:block; }
+
+@keyframes up {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── TYPO ── */
+.eyebrow { font-size:0.62rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+h1 { font-family:var(--serif); font-size:clamp(3rem,5vw,4.5rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.75rem; }
+h2 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,3rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:0.6rem; }
+h3 { font-size:0.95rem; font-weight:600; color:var(--text); margin-bottom:0.4rem; }
+.lead { font-size:1rem; font-weight:300; color:var(--muted); max-width:520px; line-height:1.85; margin-bottom:3.5rem; }
+.body-text { font-size:0.88rem; color:var(--muted); line-height:1.85; }
+hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
+
+/* ── METRICS ── */
+.metrics { display:flex; border:1px solid var(--border); margin-bottom:3rem; }
+.metric { flex:1; padding:1.75rem 2rem; border-right:1px solid var(--border); }
+.metric:last-child { border-right:none; }
+.metric-num { font-family:var(--serif); font-size:2.25rem; font-weight:800; line-height:1; margin-bottom:0.3rem; }
+.metric-label { font-size:0.65rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+
+/* ── EXPERTISE LIST ── */
+.expertise-list { margin-top:0.5rem; }
+.expertise-item { display:grid; grid-template-columns:60px 1fr; gap:2rem; padding:2.25rem 0; border-bottom:1px solid var(--border); }
+.expertise-item:first-child { border-top:1px solid var(--border); }
+.expertise-num { font-family:var(--serif); font-size:1rem; font-weight:700; color:var(--num); line-height:1.5; letter-spacing:0.05em; padding-top:2px; }
+
+/* ── TAGS ── */
+.tag { display:inline-block; font-size:0.62rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; background:var(--bg2); border:1px solid var(--border); color:var(--muted); padding:3px 10px; margin:3px 3px 0 0; }
+.tag-dark { background:var(--text); border-color:var(--text); color:#fff; }
+
+/* ── TABLE ── */
+.data-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin-top:2rem; }
+.data-table th { text-align:left; font-size:0.62rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); padding:0.75rem 1rem; border-bottom:2px solid var(--text); }
+.data-table td { padding:1rem; border-bottom:1px solid var(--border); color:var(--muted); vertical-align:top; line-height:1.75; }
+.data-table td.em { color:var(--text); font-weight:500; }
+.data-table tr:hover td { background:var(--bg2); }
+
+/* ── CONCLUSION ── */
+.conclu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-top:2.5rem; }
+.conclu-block { background:var(--bg); padding:2rem; }
+.conclu-q { font-size:0.62rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem; }
+.conclu-quote { grid-column:1/-1; background:var(--text); padding:2.5rem; }
+.conclu-quote p { font-family:var(--serif); font-size:1.6rem; font-weight:700; color:#fff; line-height:1.35; }
+
+/* ── BANNER DARK ── */
+.banner-dark { background:var(--text); padding:2.5rem; margin-top:2.5rem; }
+.banner-dark h3 { color:#fff; font-size:1rem; margin-bottom:0.5rem; }
+.banner-dark p  { color:rgba(255,255,255,0.55); font-size:0.85rem; line-height:1.85; }
+
+/* ── BIBLIO ── */
+.biblio-entry { padding:1rem 0; border-bottom:1px solid var(--border); font-size:0.83rem; color:var(--muted); font-style:italic; }
+
+/* ── PAGE NAV ── */
+.page-nav { display:flex; align-items:center; justify-content:space-between; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--border); }
+.btn { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--sans); font-size:0.72rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--border); background:none; color:var(--muted); cursor:pointer; padding:0.75rem 1.25rem; transition:all 0.15s; }
+.btn:hover { border-color:var(--text); color:var(--text); }
+.btn-primary { background:var(--text); border-color:var(--text); color:#fff; }
+.btn-primary:hover { opacity:0.8; color:#fff; }
+
+/* ── FILL HINT ── */
+[data-fill] { outline:1.5px dashed var(--num); outline-offset:3px; }
+
+/* ── PHOTO PLACEHOLDERS ── */
+.photo-wrap { display:flex; gap:2rem; align-items:flex-start; margin-bottom:2.5rem; }
+.photo-wrap .text-col { flex:1; }
+
+.photo-box {
+  border: 2px dashed var(--border);
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--muted2);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.photo-box:hover { border-color: var(--muted); background: var(--bg3); }
+
+.photo-box input[type="file"] {
+  position: absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%;
+}
+
+.photo-box img {
+  position: absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+
+.photo-box svg { width:28px; height:28px; stroke:var(--muted2); fill:none; flex-shrink:0; }
+
+.photo-box-portrait { width:160px; height:200px; }
+.photo-box-landscape { width:100%; height:200px; }
+.photo-box-square { width:120px; height:120px; }
+
+.photo-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.5rem 0; }
+.photo-row .photo-box { width:100%; height:140px; }
+</style>
+</head>
+<body>
+
+<!-- ══ TOPNAV ══ -->
+<nav class="topnav">
+  <div class="nav-logo" data-fill>[Prénom Nom] <span>Portfolio · HELMo Bloc 3</span></div>
+
+  <div class="nav-links" id="navList">
+    <button class="active" onclick="goTo(0)"><span class="nav-num">01</span>Accueil</button>
+    <button onclick="goTo(1)"><span class="nav-num">02</span>Présentation</button>
+    <button onclick="goTo(2)"><span class="nav-num">03</span>Métiers</button>
+    <button onclick="goTo(3)"><span class="nav-num">04</span>Axe 1</button>
+    <button onclick="goTo(4)"><span class="nav-num">05</span>Axe 2</button>
+    <button onclick="goTo(5)"><span class="nav-num">06</span>Conclusion</button>
+    <button onclick="goTo(6)"><span class="nav-num">07</span>Biblio</button>
+  </div>
+
+  <div class="nav-date">Dépôt : 18 mai 2026</div>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main class="main" id="mainContent">
+
+  <!-- PAGE 1 — ACCUEIL -->
+  <section class="page active" id="page-0">
+    <div class="photo-wrap">
+      <div class="text-col">
+        <p class="eyebrow">Portfolio — UE KAPs · Bachelier en Marketing · HELMo</p>
+        <h1 data-fill>[Prénom]<br>[Nom]</h1>
+        <p class="lead" data-fill>Future Ads Manager passionnée par la performance digitale, la data et la création de campagnes qui convertissent. Ce portfolio retrace trois ans de formation et de construction d'une identité professionnelle.</p>
+      </div>
+      <div class="photo-box photo-box-portrait">
+        <input type="file" accept="image/*" onchange="loadPhoto(this)">
+        <svg viewBox="0 0 24 24" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Ta photo</span>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">3</div>
+        <div class="metric-label">ans de formation</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">5</div>
+        <div class="metric-label">savoir-agir développés</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num" data-fill>X</div>
+        <div class="metric-label">activités réalisées</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">B3</div>
+        <div class="metric-label">fin de bachelier</div>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <span></span>
+      <button class="btn btn-primary" onclick="goTo(1)">Présentation →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 2 — PRÉSENTATION -->
+  <section class="page" id="page-1">
+    <p class="eyebrow">02 — Présentation personnelle</p>
+    <h2>Qui suis-je ?</h2>
+    <p class="lead" data-fill>Une accroche courte et personnelle — qui es-tu en dehors des études ?</p>
+
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <div class="expertise-num">Bio</div>
+        <div>
+          <h3>Mon parcours</h3>
+          <p class="body-text" data-fill>Présente-toi à travers les événements marquants de ton parcours, tes hobbies, et le lien avec ta formation en marketing ou ton futur projet professionnel.</p>
+          <div class="photo-row" style="margin-top:1.25rem;">
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo souvenir</span></div>
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo hobby</span></div>
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo projet</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">Val. 01</div>
+        <div>
+          <h3 data-fill>[Ta valeur n°1]</h3>
+          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">Val. 02</div>
+        <div>
+          <h3 data-fill>[Ta valeur n°2]</h3>
+          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">Val. 03</div>
+        <div>
+          <h3 data-fill>[Ta valeur n°3]</h3>
+          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-dark">
+      <h3 data-fill>« Ta citation personnelle ou ta vision du marketing. »</h3>
+      <p data-fill>Contexte ou commentaire de la citation.</p>
+    </div>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(0)">← Accueil</button>
+      <button class="btn btn-primary" onclick="goTo(2)">Métiers →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 3 — MÉTIERS -->
+  <section class="page" id="page-2">
+    <p class="eyebrow">03 — Représentation des métiers</p>
+    <h2>Ma vision du marketing</h2>
+    <p class="lead">Ce que je crois, ce qui m'attire, où je me projette.</p>
+
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <div class="expertise-num">01</div>
+        <div>
+          <h3>Ce que font les pros du marketing</h3>
+          <p class="body-text" data-fill>Décris ta représentation personnelle des métiers du marketing. Qu'est-ce qui t'a attirée vers ce domaine ? Qu'as-tu découvert depuis le bloc 1 qui a changé ou confirmé cette vision ?</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">02</div>
+        <div>
+          <h3>Pourquoi le digital & la performance</h3>
+          <p class="body-text" data-fill>Quel aspect du métier t'attire le plus ? Parle du digital, des ads, de la data. Pourquoi ce secteur plutôt qu'un autre ?</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">03</div>
+        <div>
+          <h3>Mon évolution du bloc 1 au bloc 3</h3>
+          <p class="body-text" data-fill>Comment ta représentation du métier a-t-elle évolué ? Qu'est-ce qui t'a surprise ou confirmée ? Comment envisages-tu ton entrée sur le marché de l'emploi ?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-dark">
+      <h3>Mon objectif : Ads Manager</h3>
+      <p data-fill>Décris le métier d'Ads Manager : missions, outils (Google Ads, Meta Ads Manager, analytics...), qualités requises. Fais le lien avec les 5 savoir-agir du marketeur.</p>
+    </div>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(1)">← Présentation</button>
+      <button class="btn btn-primary" onclick="goTo(3)">Axe 1 →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4 — AXE 1 -->
+  <section class="page" id="page-3">
+    <p class="eyebrow">04 — Axe 1 · Situation emblématique</p>
+    <h2>Stage & Digital Week</h2>
+    <p class="lead">Quels savoir-agir ai-je développés dans le cadre de mes stages ou de la Digital Week ?</p>
+
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <div class="expertise-num">01</div>
+        <div>
+          <h3 data-fill>[Nom de l'entreprise / situation de stage]</h3>
+          <p class="body-text" data-fill>Contextualise : où, quand, comment, avec qui ? Quelle était ta mission ? Décris ce que tu as réalisé concrètement, les difficultés rencontrées et comment tu les as surmontées.</p>
+          <div style="margin-top:1rem;">
+            <span class="tag tag-dark">SA1 — Diagnostic</span>
+            <span class="tag tag-dark">SA2 — Plan marketing</span>
+          </div>
+          <p class="body-text" style="margin-top:0.85rem;" data-fill>Explique précisément comment cette situation t'a permis de développer ces savoir-agir et quelles composantes essentielles tu as mobilisées.</p>
+          <div class="photo-row" style="grid-template-columns:1fr 1fr; margin-top:1.25rem;">
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Preuve / livrable</span></div>
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo de stage</span></div>
+          </div>
+          <p class="body-text" data-fill>Même structure : contexte → réalisation → difficultés → lien savoir-agir. Illustre avec des exemples concrets et fournis une preuve en annexe.</p>
+          <div style="margin-top:1rem;">
+            <span class="tag tag-dark">SA3 — Communication</span>
+            <span class="tag tag-dark">SA4 — Piloter des projets</span>
+          </div>
+          <p class="body-text" style="margin-top:0.85rem;" data-fill>Développe le lien entre tes actions et les composantes essentielles des savoir-agir mobilisés.</p>
+          <div class="photo-row" style="grid-template-columns:1fr 1fr; margin-top:1.25rem;">
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Preuve / livrable</span></div>
+            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo activité</span></div>
+          </div>
+    <table class="data-table">
+      <thead><tr><th>Situation emblématique</th><th>Savoir-agir</th><th>Composante essentielle</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="em" data-fill>[Stage / entreprise]</td>
+          <td data-fill>SA2 — Élaborer un plan marketing</td>
+          <td data-fill>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td>
+        </tr>
+        <tr>
+          <td class="em" data-fill>[Digital Week / autre]</td>
+          <td data-fill>SA3 — Engager par sa communication</td>
+          <td data-fill>Concevoir des supports adaptés à l'intention de communication</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(2)">← Métiers</button>
+      <button class="btn btn-primary" onclick="goTo(4)">Axe 2 →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 5 — AXE 2 -->
+  <section class="page" id="page-4">
+    <p class="eyebrow">05 — Axe 2 · Métier cible</p>
+    <h2>Devenir Ads Manager</h2>
+    <p class="lead">Quels savoir-agir utiles à ce métier ai-je développés, et comment ?</p>
+
+    <table class="data-table">
+      <thead><tr><th>Savoir-agir</th><th>Composante mobilisée</th><th>Activité réalisée</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="em">SA1 — Diagnostic stratégique</td>
+          <td data-fill>Rechercher des informations fiables sur l'entreprise et son environnement</td>
+          <td data-fill>
+            <span class="tag">Formation Google Ads</span>
+            <span class="tag">Benchmark concurrents</span>
+            <p style="margin-top:0.6rem;" data-fill>Décris l'activité et son lien concret avec le métier d'Ads Manager.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="em">SA2 — Plan marketing</td>
+          <td data-fill>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td>
+          <td data-fill>
+            <span class="tag">Campagne Meta en stage</span>
+            <p style="margin-top:0.6rem;" data-fill>Contexte, résultats, apprentissages. Lien avec le savoir-agir.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="em">SA5 — Curiosité professionnelle</td>
+          <td data-fill>Mettre à jour ses pratiques grâce aux technologies actuelles</td>
+          <td data-fill>
+            <span class="tag">Certification Meta Blueprint</span>
+            <span class="tag">Veille sectorielle</span>
+            <p style="margin-top:0.6rem;" data-fill>Ressources consultées : livres, podcasts, newsletters, certifications…</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="banner-dark">
+      <h3>Développement — Pourquoi l'Ads Management ?</h3>
+      <p data-fill>Développe ta motivation pour ce métier. Comment tes activités ont-elles nourri ton projet professionnel ? En quoi t'ont-elles permis de mieux comprendre les réalités du métier ?</p>
+    </div>
+
+    <div class="photo-row" style="margin-top:1rem;">
+      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Certification</span></div>
+      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Campagne / résultat</span></div>
+      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Outil / screenshot</span></div>
+    </div>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(3)">← Axe 1</button>
+      <button class="btn btn-primary" onclick="goTo(5)">Conclusion →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 6 — CONCLUSION -->
+  <section class="page" id="page-5">
+    <p class="eyebrow">06 — Conclusion réflexive</p>
+    <h2>Ce que je retiens</h2>
+    <p class="lead">Un regard honnête sur trois ans de formation et de construction de moi-même.</p>
+
+    <div class="conclu-grid">
+      <div class="conclu-block">
+        <div class="conclu-q">En tant qu'apprenante</div>
+        <p class="body-text" data-fill>Qu'as-tu appris sur ta façon d'apprendre, d'étudier, de te challenger ? Qu'est-ce qui a changé entre le bloc 1 et maintenant ?</p>
+      </div>
+      <div class="conclu-block">
+        <div class="conclu-q">Cursus vs activités</div>
+        <p class="body-text" data-fill>Comment tes activités extérieures ont-elles enrichi la théorie apprise en classe ? Ont-elles apporté un regard différent ?</p>
+      </div>
+      <div class="conclu-block">
+        <div class="conclu-q">Évolution de ma vision du métier</div>
+        <p class="body-text" data-fill>Comment ta représentation du marketing a-t-elle évolué depuis le bloc 1 ? Qu'est-ce qui t'a surprise ou confirmée ?</p>
+      </div>
+      <div class="conclu-block">
+        <div class="conclu-q">Perspectives professionnelles</div>
+        <p class="body-text" data-fill>Comment envisages-tu la suite ? Premier emploi, spécialisations ? Qu'est-ce que ce portfolio t'a révélé sur toi-même ?</p>
+      </div>
+      <div class="conclu-quote">
+        <p data-fill>« Termine par une phrase forte et personnelle qui résume ton parcours ou ta vision d'avenir. »</p>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(4)">← Axe 2</button>
+      <button class="btn btn-primary" onclick="goTo(6)">Bibliographie →</button>
+    </div>
+  </section>
+
+  <!-- PAGE 7 — BIBLIOGRAPHIE -->
+  <section class="page" id="page-6">
+    <p class="eyebrow">07 — Bibliographie & Annexes</p>
+    <h2>Sources & preuves</h2>
+
+    <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin:2.5rem 0 0.5rem;">Bibliographie (normes APA)</p>
+    <div class="biblio-entry" data-fill>Auteur, A. (Année). <em>Titre de l'ouvrage</em>. Éditeur.</div>
+    <div class="biblio-entry" data-fill>Auteur, B. (Année). Titre de l'article. <em>Nom de la revue</em>, volume(numéro), pages.</div>
+    <div class="biblio-entry" data-fill>Titre de la page. (Année, mois jour). URL</div>
+
+    <hr>
+
+    <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Annexes</p>
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <div class="expertise-num">A1</div>
+        <div>
+          <h3 data-fill>[Titre de l'annexe 1]</h3>
+          <p class="body-text" data-fill>Description de la preuve (rapport de stage, screenshot de campagne, certificat…)</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">A2</div>
+        <div>
+          <h3 data-fill>[Titre de l'annexe 2]</h3>
+          <p class="body-text" data-fill>Description de la preuve.</p>
+        </div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">A3</div>
+        <div>
+          <h3 data-fill>[Titre de l'annexe 3]</h3>
+          <p class="body-text" data-fill>Description de la preuve.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="btn" onclick="goTo(5)">← Conclusion</button>
+      <span style="font-size:0.72rem;color:var(--muted2);letter-spacing:0.06em;">Fin du portfolio ✓</span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const pages   = document.querySelectorAll('.page');
+const navBtns = document.querySelectorAll('#navList button');
+function goTo(i) {
+  pages.forEach((p,idx) => p.classList.toggle('active', idx===i));
+  navBtns.forEach((b,idx) => b.classList.toggle('active', idx===i));
+  document.getElementById('mainContent').scrollTo({top:0,behavior:'instant'});
+}
+
+function loadPhoto(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const box = input.closest('.photo-box');
+    let img = box.querySelector('img');
+    if (!img) { img = document.createElement('img'); box.appendChild(img); }
+    img.src = e.target.result;
+    box.querySelectorAll('svg, span').forEach(el => el.style.display = 'none');
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+</script>
+</body>
+</html>
