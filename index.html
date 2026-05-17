@@ -166,10 +166,11 @@ hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
 /* ── LAYOUT 2 COL ── */
 .two-col { display:flex; gap:3rem; align-items:flex-start; }
 .two-col .col-content { flex:1; min-width:0; }
-.two-col .col-photo { width:260px; flex-shrink:0; position:sticky; top:2rem; }
+.two-col .col-photo { width:420px; flex-shrink:0; position:sticky; top:2rem; }
 .two-col .col-photo img { width:100%; object-fit:cover; border:1px solid var(--border); display:block; }
-.photo-portrait { height:340px; }
-.photo-side { height:100%; min-height:320px; }
+.no-border { border:none !important; }
+.photo-portrait { aspect-ratio:9/16; height:auto; }
+.photo-side { aspect-ratio:9/16; height:auto; }
 </style>
 </head>
 <body>
@@ -385,7 +386,7 @@ hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
         </div>
       </div>
       <div class="col-photo">
-        <img src="logo-webstorm.jpg" alt="Webstorm Digital Agency" class="photo-side" style="object-fit:contain; padding:2rem; background:var(--bg2);">
+        <img src="logo-webstorm.jpg" alt="Webstorm Digital Agency" class="photo-side no-border" style="object-fit:contain; padding:3rem; min-height:500px; width:100%;">
       </div>
     </div>
   </section>
