@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — [Prénom Nom] | HELMo Marketing Bloc 3</title>
+<title>Portfolio — Alexis Renkin | HELMo Marketing Bloc 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -95,7 +95,7 @@ body { font-family:var(--sans); background:var(--bg); color:var(--text); font-si
   display: none;
   min-height: calc(100vh - 60px);
   padding: 5rem;
-  max-width: 860px;
+  max-width: 1100px;
   animation: up 0.25s ease both;
 }
 .page.active { display:block; }
@@ -163,55 +163,20 @@ hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
 /* ── FILL HINT ── */
 [data-fill] { outline:1.5px dashed var(--num); outline-offset:3px; }
 
-/* ── PHOTO PLACEHOLDERS ── */
-.photo-wrap { display:flex; gap:2rem; align-items:flex-start; margin-bottom:2.5rem; }
-.photo-wrap .text-col { flex:1; }
-
-.photo-box {
-  border: 2px dashed var(--border);
-  background: var(--bg2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  color: var(--muted2);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.photo-box:hover { border-color: var(--muted); background: var(--bg3); }
-
-.photo-box input[type="file"] {
-  position: absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%;
-}
-
-.photo-box img {
-  position: absolute; inset:0; width:100%; height:100%; object-fit:cover;
-}
-
-.photo-box svg { width:28px; height:28px; stroke:var(--muted2); fill:none; flex-shrink:0; }
-
-.photo-box-portrait { width:160px; height:200px; }
-.photo-box-landscape { width:100%; height:200px; }
-.photo-box-square { width:120px; height:120px; }
-
-.photo-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.5rem 0; }
-.photo-row .photo-box { width:100%; height:140px; }
+/* ── LAYOUT 2 COL ── */
+.two-col { display:flex; gap:3rem; align-items:flex-start; }
+.two-col .col-content { flex:1; min-width:0; }
+.two-col .col-photo { width:260px; flex-shrink:0; position:sticky; top:2rem; }
+.two-col .col-photo img { width:100%; object-fit:cover; border:1px solid var(--border); display:block; }
+.photo-portrait { height:340px; }
+.photo-side { height:100%; min-height:320px; }
 </style>
 </head>
 <body>
 
 <!-- ══ TOPNAV ══ -->
 <nav class="topnav">
-  <div class="nav-logo" data-fill>[Prénom Nom] <span>Portfolio · HELMo Bloc 3</span></div>
+  <div class="nav-logo" data-fill>Alexis Renkin <span>Portfolio · HELMo Bloc 3</span></div>
 
   <div class="nav-links" id="navList">
     <button class="active" onclick="goTo(0)"><span class="nav-num">01</span>Accueil</button>
@@ -220,7 +185,6 @@ hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
     <button onclick="goTo(3)"><span class="nav-num">04</span>Axe 1</button>
     <button onclick="goTo(4)"><span class="nav-num">05</span>Axe 2</button>
     <button onclick="goTo(5)"><span class="nav-num">06</span>Conclusion</button>
-    <button onclick="goTo(6)"><span class="nav-num">07</span>Biblio</button>
   </div>
 
   <div class="nav-date">Dépôt : 18 mai 2026</div>
@@ -231,320 +195,293 @@ hr { border:none; border-top:1px solid var(--border); margin:3rem 0; }
 
   <!-- PAGE 1 — ACCUEIL -->
   <section class="page active" id="page-0">
-    <div class="photo-wrap">
-      <div class="text-col">
+    <div class="two-col">
+      <div class="col-content">
         <p class="eyebrow">Portfolio — UE KAPs · Bachelier en Marketing · HELMo</p>
-        <h1 data-fill>[Prénom]<br>[Nom]</h1>
-        <p class="lead" data-fill>Future Ads Manager passionnée par la performance digitale, la data et la création de campagnes qui convertissent. Ce portfolio retrace trois ans de formation et de construction d'une identité professionnelle.</p>
+        <h1>Alexis<br>Renkin</h1>
+        <p class="lead"><strong>Futur Ads Manager | Data, Conversion & Intelligence Artificielle</strong><br>
+        Passionné par la performance digitale et mordu de nouvelles technologies, j'aime utiliser l'innovation (comme l'IA) pour créer des campagnes impactantes. Découvrez à travers ce portfolio trois ans d'apprentissage et l'évolution de mon profil de marketeur.</p>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-num">4</div>
+            <div class="metric-label">ans de formation<br>(1 en bonus)</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">5</div>
+            <div class="metric-label">savoir-agir développés</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">B3</div>
+            <div class="metric-label">fin de bachelier</div>
+          </div>
+        </div>
+        <div class="page-nav" style="margin-top:2rem;">
+          <span></span>
+          <button class="btn btn-primary" onclick="goTo(1)">Présentation →</button>
+        </div>
       </div>
-      <div class="photo-box photo-box-portrait">
-        <input type="file" accept="image/*" onchange="loadPhoto(this)">
-        <svg viewBox="0 0 24 24" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <span>Ta photo</span>
+      <div class="col-photo">
+        <img src="photo-profil.png" alt="Photo de profil" class="photo-portrait">
       </div>
-    </div>
-
-    <div class="metrics">
-      <div class="metric">
-        <div class="metric-num">3</div>
-        <div class="metric-label">ans de formation</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">5</div>
-        <div class="metric-label">savoir-agir développés</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num" data-fill>X</div>
-        <div class="metric-label">activités réalisées</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">B3</div>
-        <div class="metric-label">fin de bachelier</div>
-      </div>
-    </div>
-
-    <div class="page-nav">
-      <span></span>
-      <button class="btn btn-primary" onclick="goTo(1)">Présentation →</button>
     </div>
   </section>
 
   <!-- PAGE 2 — PRÉSENTATION -->
   <section class="page" id="page-1">
-    <p class="eyebrow">02 — Présentation personnelle</p>
-    <h2>Qui suis-je ?</h2>
-    <p class="lead" data-fill>Une accroche courte et personnelle — qui es-tu en dehors des études ?</p>
-
-    <div class="expertise-list">
-      <div class="expertise-item">
-        <div class="expertise-num">Bio</div>
-        <div>
-          <h3>Mon parcours</h3>
-          <p class="body-text" data-fill>Présente-toi à travers les événements marquants de ton parcours, tes hobbies, et le lien avec ta formation en marketing ou ton futur projet professionnel.</p>
-          <div class="photo-row" style="margin-top:1.25rem;">
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo souvenir</span></div>
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo hobby</span></div>
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo projet</span></div>
+    <div class="two-col">
+      <div class="col-content">
+        <p class="eyebrow">02 — Présentation personnelle</p>
+        <h2>Qui suis-je ?</h2>
+        <p class="lead">Étudiant en marketing avec l'envie d'entreprendre, passionné de sports moteurs et convaincu que la data est le meilleur copilote qu'on puisse avoir.</p>
+        <div class="expertise-list">
+          <div class="expertise-item">
+            <div class="expertise-num">Bio</div>
+            <div>
+              <h3>Mon parcours</h3>
+              <p class="body-text">Curieux de nature et entrepreneur dans l'âme, j'ai très tôt développé le sens des responsabilités en gérant des chantiers de déménagement et vide-maison avec des équipes d'étudiants pendant 6 ans. Une expérience qui m'a appris à manager, anticiper et m'adapter, des compétences que je retrouve aujourd'hui dans le marketing digital.</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-num">Val. 01</div>
+            <div>
+              <h3>Ambition</h3>
+              <p class="body-text">Je me fixe toujours des objectifs concrets et je mets tout en œuvre pour les atteindre. En marketing digital, cette ambition se traduit par une recherche constante de meilleures performances et de meilleurs résultats.</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-num">Val. 02</div>
+            <div>
+              <h3>Curiosité</h3>
+              <p class="body-text">Curieux de nature, je ne me contente jamais de ce que je sais déjà. Nouveaux outils, nouvelles plateformes, nouvelles stratégies, j'aime comprendre comment les choses fonctionnent et les tester par moi-même.</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-num">Val. 03</div>
+            <div>
+              <h3>Résilience</h3>
+              <p class="body-text">6 ans de gestion de chantiers m'ont appris une chose essentielle : les imprévus font partie du jeu. J'ai appris à encaisser, rebondir et trouver des solutions rapidement. En marketing digital, où les résultats ne sont jamais garantis, c'est une qualité que j'utilise au quotidien.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="expertise-item">
-        <div class="expertise-num">Val. 01</div>
-        <div>
-          <h3 data-fill>[Ta valeur n°1]</h3>
-          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
+        <div class="banner-dark">
+          <h3>« Si tout semble sous contrôle, c'est que vous n'allez pas assez vite. » <br><strong>Ayrton Senna</strong></h3>
+          <p>Ayrton Senna parlait de course automobile. Moi j'y vois une approche du marketing, toujours tester, toujours pousser plus loin.</p>
+        </div>
+        <div class="page-nav">
+          <button class="btn" onclick="goTo(0)">← Accueil</button>
+          <button class="btn btn-primary" onclick="goTo(2)">Métiers →</button>
         </div>
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">Val. 02</div>
-        <div>
-          <h3 data-fill>[Ta valeur n°2]</h3>
-          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
-        </div>
+      <div class="col-photo">
+        <img src="photo-presentation.png" alt="Photo présentation" class="photo-side">
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">Val. 03</div>
-        <div>
-          <h3 data-fill>[Ta valeur n°3]</h3>
-          <p class="body-text" data-fill>Explique cette valeur et comment elle se manifeste dans ta vie ou tes études.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="banner-dark">
-      <h3 data-fill>« Ta citation personnelle ou ta vision du marketing. »</h3>
-      <p data-fill>Contexte ou commentaire de la citation.</p>
-    </div>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(0)">← Accueil</button>
-      <button class="btn btn-primary" onclick="goTo(2)">Métiers →</button>
     </div>
   </section>
 
   <!-- PAGE 3 — MÉTIERS -->
   <section class="page" id="page-2">
-    <p class="eyebrow">03 — Représentation des métiers</p>
-    <h2>Ma vision du marketing</h2>
-    <p class="lead">Ce que je crois, ce qui m'attire, où je me projette.</p>
-
-    <div class="expertise-list">
-      <div class="expertise-item">
-        <div class="expertise-num">01</div>
-        <div>
-          <h3>Ce que font les pros du marketing</h3>
-          <p class="body-text" data-fill>Décris ta représentation personnelle des métiers du marketing. Qu'est-ce qui t'a attirée vers ce domaine ? Qu'as-tu découvert depuis le bloc 1 qui a changé ou confirmé cette vision ?</p>
+    <div class="two-col">
+      <div class="col-content">
+        <p class="eyebrow">03 — Représentation des métiers</p>
+        <h2>Ma vision du marketing</h2>
+        <p class="lead">Ce que je crois, ce qui m'attire, où je me projette.</p>
+        <div class="expertise-list">
+          <div class="expertise-item">
+            <div class="expertise-num">01</div>
+            <div>
+              <h3>Ce que font les pros du marketing</h3>
+              <p class="body-text">En agence, les pros du marketing sont avant tout des gens proactifs. Ils ne répondent pas juste aux briefs, ils les devancent. Analyser le marché, identifier ce qui pourrait fonctionner et le proposer au client avant qu'il ne le demande, c'est ça le vrai travail.</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-num">02</div>
+            <div>
+              <h3>Pourquoi le digital & la performance</h3>
+              <p class="body-text">Le digital est en plein boom et l'IA n'en est qu'à ses débuts. Les campagnes de demain seront 10x plus performantes, plus ciblées et plus intelligentes. C'est exactement là où je veux être.</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-num">03</div>
+            <div>
+              <h3>Mon évolution du bloc 1 au bloc 3</h3>
+              <p class="body-text">En trois ans, ma vision du marketing a complètement changé. J'ai failli arrêter, le métier ne me parlait pas vraiment. C'est mon stage qui a tout changé : j'ai découvert le métier d'Ads Manager, que je ne connaissais pas, et j'ai immédiatement su que c'était ça. La diversité des défis, la data, l'optimisation constante, c'est exactement ce qui me challenge et me motive.</p>
+            </div>
+          </div>
+        </div>
+        <div class="banner-dark">
+          <h3>Mon objectif : Ads Manager</h3>
+          <p>L'Ads Manager gère et optimise des campagnes publicitaires sur Meta, Google et d'autres plateformes. Mais le métier va bien au-delà de la simple gestion de campagnes : il implique aussi du media buying, de la planification saisonnière, des reportings mensuels et un accompagnement client régulier. 16 semaines de stage m'ont permis de vivre tout ça de l'intérieur et de confirmer que c'est exactement là où je veux être.</p>
+        </div>
+        <div class="page-nav">
+          <button class="btn" onclick="goTo(1)">← Présentation</button>
+          <button class="btn btn-primary" onclick="goTo(3)">Axe 1 →</button>
         </div>
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">02</div>
-        <div>
-          <h3>Pourquoi le digital & la performance</h3>
-          <p class="body-text" data-fill>Quel aspect du métier t'attire le plus ? Parle du digital, des ads, de la data. Pourquoi ce secteur plutôt qu'un autre ?</p>
-        </div>
+      <div class="col-photo">
+        <img src="photo-metiers.jpeg" alt="Photo métiers" class="photo-side">
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">03</div>
-        <div>
-          <h3>Mon évolution du bloc 1 au bloc 3</h3>
-          <p class="body-text" data-fill>Comment ta représentation du métier a-t-elle évolué ? Qu'est-ce qui t'a surprise ou confirmée ? Comment envisages-tu ton entrée sur le marché de l'emploi ?</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="banner-dark">
-      <h3>Mon objectif : Ads Manager</h3>
-      <p data-fill>Décris le métier d'Ads Manager : missions, outils (Google Ads, Meta Ads Manager, analytics...), qualités requises. Fais le lien avec les 5 savoir-agir du marketeur.</p>
-    </div>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(1)">← Présentation</button>
-      <button class="btn btn-primary" onclick="goTo(3)">Axe 1 →</button>
     </div>
   </section>
 
   <!-- PAGE 4 — AXE 1 -->
   <section class="page" id="page-3">
-    <p class="eyebrow">04 — Axe 1 · Situation emblématique</p>
-    <h2>Stage & Digital Week</h2>
-    <p class="lead">Quels savoir-agir ai-je développés dans le cadre de mes stages ou de la Digital Week ?</p>
+    <div class="two-col">
+      <div class="col-content">
+        <p class="eyebrow">04 — Axe 1 · Situation emblématique</p>
+        <h2>Stage chez Webstorm & Portfolio</h2>
+        <p class="lead">Quels savoir-agir ai-je développés dans le cadre de mon stage chez Webstorm ?</p>
+        <div class="expertise-list">
+          <div class="expertise-item">
+            <div class="expertise-num">01</div>
+            <div>
+              <h3>Stage chez Webstorm Digital Agency — Luxembourg</h3>
+              <p class="body-text">Durant 16 semaines chez Webstorm Digital Agency au Luxembourg, j'ai eu l'opportunité de gérer des campagnes publicitaires sur Meta et Google pour plusieurs clients, de réaliser des analyses UX et des audits de situation digitale pour préparer des pitchs clients. Un environnement d'agence qui m'a plongé directement dans les réalités du métier d'Ads Manager. La difficulté la plus marquante a été la récupération d'une page Facebook bloquée dans un Business Manager dont le seul administrateur était un compte restreint. Deux mois de contact avec le support Meta, une situation toujours pas résolue mais qui m'a appris la persévérance et la gestion des imprévus dans un contexte professionnel réel.</p>
+              <div style="margin-top:1rem;">
+                <span class="tag tag-dark">SA1 — Diagnostic</span>
+                <p class="body-text" style="margin-top:0.75rem;">Dans le cadre de la prospection de nouveaux clients, j'ai effectué des analyses de situation digitale et des audits UX. Ces diagnostics servaient de base aux pitchs de mes responsables, il fallait comprendre l'environnement digital du prospect et identifier les opportunités d'amélioration avant même le premier rendez-vous.</p>
+              </div>
+              <div style="margin-top:1rem;">
+                <span class="tag tag-dark">SA2 — Plan marketing</span>
+                <p class="body-text" style="margin-top:0.75rem;">J'ai développé ce savoir-agir à travers la gestion complète de campagnes publicitaires : choix des formats sur Google et Meta, planification du media buying annuel et évaluation des performances via les KPIs. Chaque décision devait être justifiée et orientée résultats.</p>
+              </div>
+              <div style="margin-top:1rem;">
+                <span class="tag tag-dark">SA3 — Communication</span>
+                <p class="body-text" style="margin-top:0.75rem;">La communication client chez Webstorm m'a appris à m'adapter à différents profils d'interlocuteurs. Que ce soit pour expliquer des résultats décevants, défendre une stratégie ou proposer de nouvelles orientations, j'ai développé une vraie aisance dans la communication professionnelle.</p>
+              </div>
+              <div style="margin-top:1rem;">
+                <span class="tag tag-dark">SA4 — Piloter des projets</span>
+                <p class="body-text" style="margin-top:0.75rem;">Piloter des projets, c'est ce que j'ai fait au quotidien chez Webstorm. Coordination des campagnes, respect des délais, gestion des imprévus comme le problème du Business Manager Meta — autant de situations qui m'ont appris à gérer la pression et à trouver des solutions concrètes.</p>
+              </div>
+            </div>
+          </div>
 
-    <div class="expertise-list">
-      <div class="expertise-item">
-        <div class="expertise-num">01</div>
-        <div>
-          <h3 data-fill>[Nom de l'entreprise / situation de stage]</h3>
-          <p class="body-text" data-fill>Contextualise : où, quand, comment, avec qui ? Quelle était ta mission ? Décris ce que tu as réalisé concrètement, les difficultés rencontrées et comment tu les as surmontées.</p>
-          <div style="margin-top:1rem;">
-            <span class="tag tag-dark">SA1 — Diagnostic</span>
-            <span class="tag tag-dark">SA2 — Plan marketing</span>
+          <div class="expertise-item">
+            <div class="expertise-num">02</div>
+            <div>
+              <h3>Création du portfolio — Premier site web codé</h3>
+              <p class="body-text">Ce portfolio est lui-même une situation emblématique. Plutôt que d'utiliser un outil no-code, j'ai choisi de le coder en HTML/CSS et de le déployer sur GitHub Pages, une technologie que je ne connaissais pas. Du code à la mise en ligne, j'ai tout appris de zéro, avec l'aide de l'IA comme outil d'apprentissage.</p>
+              <div style="margin-top:1rem;">
+                <span class="tag tag-dark">SA5 — Curiosité professionnelle</span>
+                <p class="body-text" style="margin-top:0.75rem;">En choisissant de coder ce portfolio plutôt que d'utiliser Canva, j'ai mobilisé le SA5 dans sa forme la plus concrète : mettre à jour ses pratiques grâce aux technologies actuelles, s'inscrire dans une démarche de formation continue et cultiver une posture de curiosité face à l'inconnu. L'IA m'a servi d'outil d'apprentissage, une façon moderne et efficace de développer de nouvelles compétences.</p>
+              </div>
+            </div>
           </div>
-          <p class="body-text" style="margin-top:0.85rem;" data-fill>Explique précisément comment cette situation t'a permis de développer ces savoir-agir et quelles composantes essentielles tu as mobilisées.</p>
-          <div class="photo-row" style="grid-template-columns:1fr 1fr; margin-top:1.25rem;">
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Preuve / livrable</span></div>
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo de stage</span></div>
-          </div>
-          <p class="body-text" data-fill>Même structure : contexte → réalisation → difficultés → lien savoir-agir. Illustre avec des exemples concrets et fournis une preuve en annexe.</p>
-          <div style="margin-top:1rem;">
-            <span class="tag tag-dark">SA3 — Communication</span>
-            <span class="tag tag-dark">SA4 — Piloter des projets</span>
-          </div>
-          <p class="body-text" style="margin-top:0.85rem;" data-fill>Développe le lien entre tes actions et les composantes essentielles des savoir-agir mobilisés.</p>
-          <div class="photo-row" style="grid-template-columns:1fr 1fr; margin-top:1.25rem;">
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Preuve / livrable</span></div>
-            <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo activité</span></div>
-          </div>
-    <table class="data-table">
-      <thead><tr><th>Situation emblématique</th><th>Savoir-agir</th><th>Composante essentielle</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="em" data-fill>[Stage / entreprise]</td>
-          <td data-fill>SA2 — Élaborer un plan marketing</td>
-          <td data-fill>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td>
-        </tr>
-        <tr>
-          <td class="em" data-fill>[Digital Week / autre]</td>
-          <td data-fill>SA3 — Engager par sa communication</td>
-          <td data-fill>Concevoir des supports adaptés à l'intention de communication</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(2)">← Métiers</button>
-      <button class="btn btn-primary" onclick="goTo(4)">Axe 2 →</button>
+        </div>
+        <hr>
+        <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0;">Tableau récapitulatif</p>
+        <table class="data-table">
+          <thead><tr><th>Situation emblématique</th><th>Savoir-agir</th><th>Composante essentielle</th></tr></thead>
+          <tbody>
+            <tr><td class="em">Stage - Webstorm</td><td>SA1 — Diagnostic stratégique</td><td>Analyser l'environnement digital du prospect</td></tr>
+            <tr><td class="em">Stage - Webstorm</td><td>SA2 — Plan marketing</td><td>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td></tr>
+            <tr><td class="em">Stage - Webstorm</td><td>SA3 — Communication</td><td>S'adapter aux réactions et besoins des interlocuteurs</td></tr>
+            <tr><td class="em">Stage - Webstorm</td><td>SA4 — Piloter des projets</td><td>Gérer les contraintes et imprévus avec résilience</td></tr>
+            <tr><td class="em">Portfolio - Site Web</td><td>SA5 — Curiosité professionnelle</td><td>Mettre à jour ses pratiques grâce aux technologies actuelles</td></tr>
+          </tbody>
+        </table>
+        <div class="page-nav">
+          <button class="btn" onclick="goTo(2)">← Métiers</button>
+          <button class="btn btn-primary" onclick="goTo(4)">Axe 2 →</button>
+        </div>
+      </div>
+      <div class="col-photo">
+        <img src="logo-webstorm.jpg" alt="Webstorm Digital Agency" class="photo-side" style="object-fit:contain; padding:2rem; background:var(--bg2);">
+      </div>
     </div>
   </section>
 
   <!-- PAGE 5 — AXE 2 -->
   <section class="page" id="page-4">
-    <p class="eyebrow">05 — Axe 2 · Métier cible</p>
-    <h2>Devenir Ads Manager</h2>
-    <p class="lead">Quels savoir-agir utiles à ce métier ai-je développés, et comment ?</p>
-
-    <table class="data-table">
-      <thead><tr><th>Savoir-agir</th><th>Composante mobilisée</th><th>Activité réalisée</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="em">SA1 — Diagnostic stratégique</td>
-          <td data-fill>Rechercher des informations fiables sur l'entreprise et son environnement</td>
-          <td data-fill>
-            <span class="tag">Formation Google Ads</span>
-            <span class="tag">Benchmark concurrents</span>
-            <p style="margin-top:0.6rem;" data-fill>Décris l'activité et son lien concret avec le métier d'Ads Manager.</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="em">SA2 — Plan marketing</td>
-          <td data-fill>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td>
-          <td data-fill>
-            <span class="tag">Campagne Meta en stage</span>
-            <p style="margin-top:0.6rem;" data-fill>Contexte, résultats, apprentissages. Lien avec le savoir-agir.</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="em">SA5 — Curiosité professionnelle</td>
-          <td data-fill>Mettre à jour ses pratiques grâce aux technologies actuelles</td>
-          <td data-fill>
-            <span class="tag">Certification Meta Blueprint</span>
-            <span class="tag">Veille sectorielle</span>
-            <p style="margin-top:0.6rem;" data-fill>Ressources consultées : livres, podcasts, newsletters, certifications…</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="banner-dark">
-      <h3>Développement — Pourquoi l'Ads Management ?</h3>
-      <p data-fill>Développe ta motivation pour ce métier. Comment tes activités ont-elles nourri ton projet professionnel ? En quoi t'ont-elles permis de mieux comprendre les réalités du métier ?</p>
-    </div>
-
-    <div class="photo-row" style="margin-top:1rem;">
-      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Certification</span></div>
-      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Campagne / résultat</span></div>
-      <div class="photo-box"><input type="file" accept="image/*" onchange="loadPhoto(this)"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Outil / screenshot</span></div>
-    </div>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(3)">← Axe 1</button>
-      <button class="btn btn-primary" onclick="goTo(5)">Conclusion →</button>
+    <div class="two-col">
+      <div class="col-content">
+        <p class="eyebrow">05 — Axe 2 · Métier cible</p>
+        <h2>Devenir Ads Manager</h2>
+        <p class="lead">Quels savoir-agir utiles à ce métier ai-je développés, et comment ?</p>
+        <table class="data-table">
+          <thead><tr><th>Savoir-agir</th><th>Composante mobilisée</th><th>Activité réalisée</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="em">SA1 — Diagnostic stratégique</td>
+              <td data-fill>Rechercher des informations fiables sur les concurrents et leur environnement publicitaire</td>
+              <td data-fill>
+                <span class="tag">Google Ads Transparency</span>
+                <span class="tag">Meta Ads Library</span>
+                <span class="tag">Linkedin Ads Library</span>
+                <p style="margin-top:0.6rem;" data-fill>Audit Concurrentiel, analyse de formats, cibles et zones de diffusion des concurrents pour orienter notre stratégie.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="em">SA2 — Plan marketing</td>
+              <td data-fill>Évaluer la faisabilité et l'efficacité des actions (ROI, KPI)</td>
+              <td data-fill>
+                <span class="tag">Media Buying</span>
+                <span class="tag">Planification saisonnière</span>
+                <p style="margin-top:0.6rem;" data-fill>Élaboration des plans media buying annuels en tenant compte des saisonnalités produits, adaptation des budgets selon les périodes de forte et faible demande pour maximiser le ROI.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="em">SA5 — Curiosité professionnelle</td>
+              <td data-fill>Mettre à jour ses pratiques grâce aux technologies actuelles</td>
+              <td data-fill>
+                <span class="tag">Google Ads Scripts</span>
+                <span class="tag">Agent IA</span>
+                <p style="margin-top:0.6rem;" data-fill>Automatisation des relevés media buying via Google Ads Scripts et développement d'un agent IA appliqué à l'Ads Management</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="banner-dark">
+          <h3>Développement — Pourquoi l'Ads Management ?</h3>
+          <p data-fill>Ce que j'aime dans ce métier, c'est qu'il est à la fois challengeant et varié. On gère plusieurs clients en parallèle, chacun avec ses propres objectifs et contraintes. On analyse, on teste, on optimise et on recommence. Le contact client vient enrichir tout ça : des échanges qui donnent du sens aux chiffres et aux campagnes.</p>
+        </div>
+        <div class="page-nav">
+          <button class="btn" onclick="goTo(3)">← Axe 1</button>
+          <button class="btn btn-primary" onclick="goTo(5)">Conclusion →</button>
+        </div>
+      </div>
+      <div class="col-photo">
+        <img src="photo-axe2.jpeg" alt="Photo Axe 2" class="photo-side">
+      </div>
     </div>
   </section>
 
   <!-- PAGE 6 — CONCLUSION -->
   <section class="page" id="page-5">
-    <p class="eyebrow">06 — Conclusion réflexive</p>
-    <h2>Ce que je retiens</h2>
-    <p class="lead">Un regard honnête sur trois ans de formation et de construction de moi-même.</p>
-
-    <div class="conclu-grid">
-      <div class="conclu-block">
-        <div class="conclu-q">En tant qu'apprenante</div>
-        <p class="body-text" data-fill>Qu'as-tu appris sur ta façon d'apprendre, d'étudier, de te challenger ? Qu'est-ce qui a changé entre le bloc 1 et maintenant ?</p>
-      </div>
-      <div class="conclu-block">
-        <div class="conclu-q">Cursus vs activités</div>
-        <p class="body-text" data-fill>Comment tes activités extérieures ont-elles enrichi la théorie apprise en classe ? Ont-elles apporté un regard différent ?</p>
-      </div>
-      <div class="conclu-block">
-        <div class="conclu-q">Évolution de ma vision du métier</div>
-        <p class="body-text" data-fill>Comment ta représentation du marketing a-t-elle évolué depuis le bloc 1 ? Qu'est-ce qui t'a surprise ou confirmée ?</p>
-      </div>
-      <div class="conclu-block">
-        <div class="conclu-q">Perspectives professionnelles</div>
-        <p class="body-text" data-fill>Comment envisages-tu la suite ? Premier emploi, spécialisations ? Qu'est-ce que ce portfolio t'a révélé sur toi-même ?</p>
-      </div>
-      <div class="conclu-quote">
-        <p data-fill>« Termine par une phrase forte et personnelle qui résume ton parcours ou ta vision d'avenir. »</p>
-      </div>
-    </div>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(4)">← Axe 2</button>
-      <button class="btn btn-primary" onclick="goTo(6)">Bibliographie →</button>
-    </div>
-  </section>
-
-  <!-- PAGE 7 — BIBLIOGRAPHIE -->
-  <section class="page" id="page-6">
-    <p class="eyebrow">07 — Bibliographie & Annexes</p>
-    <h2>Sources & preuves</h2>
-
-    <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin:2.5rem 0 0.5rem;">Bibliographie (normes APA)</p>
-    <div class="biblio-entry" data-fill>Auteur, A. (Année). <em>Titre de l'ouvrage</em>. Éditeur.</div>
-    <div class="biblio-entry" data-fill>Auteur, B. (Année). Titre de l'article. <em>Nom de la revue</em>, volume(numéro), pages.</div>
-    <div class="biblio-entry" data-fill>Titre de la page. (Année, mois jour). URL</div>
-
-    <hr>
-
-    <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Annexes</p>
-    <div class="expertise-list">
-      <div class="expertise-item">
-        <div class="expertise-num">A1</div>
-        <div>
-          <h3 data-fill>[Titre de l'annexe 1]</h3>
-          <p class="body-text" data-fill>Description de la preuve (rapport de stage, screenshot de campagne, certificat…)</p>
+    <div class="two-col">
+      <div class="col-content">
+        <p class="eyebrow">06 — Conclusion réflexive</p>
+        <h2>Ce que je retiens</h2>
+        <p class="lead">Un regard honnête sur trois ans de formation et de construction de moi-même.</p>
+        <div class="conclu-grid">
+          <div class="conclu-block">
+            <div class="conclu-q">En tant qu'apprenant</div>
+            <p class="body-text" data-fill>Ces trois ans m'ont appris que j'apprends mieux par la pratique que par la théorie. Le stage, les automatisations, le codage de ce site, c'est en faisant que j'ai vraiment progressé. J'ai aussi compris que la curiosité est ma meilleure alliée : quand quelque chose m'intéresse, je vais chercher par moi-même bien au-delà de ce qu'on me demande.</p>
+          </div>
+          <div class="conclu-block">
+            <div class="conclu-q">Cursus vs activités</div>
+            <p class="body-text" data-fill>Les cours m'ont donné le vocabulaire et les frameworks. Mais c'est le terrain qui leur a donné du sens. Planifier un media buying en agence, c'est autre chose que de l'étudier dans un syllabus. Mon expérience dans les chantiers de déménagement m'a aussi rappelé quelque chose que les cours effleurent rarement : manager sous pression, ça s'apprend en le faisant.</p>
+          </div>
+          <div class="conclu-block">
+            <div class="conclu-q">Évolution de ma vision du métier</div>
+            <p class="body-text" data-fill>Ma représentation du marketing a fait un chemin de 180°. Au départ, je me demandais si j'avais fait le bon choix. C'est le stage qui a tout basculé : en gérant de vraies campagnes pour de vrais clients, j'ai compris que le marketing de performance n'a rien à voir avec ce qu'on imagine depuis un banc d'école. Aujourd'hui, je sais exactement où je veux aller et pourquoi.</p>
+          </div>
+          <div class="conclu-block">
+            <div class="conclu-q">Perspectives professionnelles</div>
+            <p class="body-text" data-fill>La suite est déjà écrite : je commence comme étudiant chez Webstorm le 1er juillet, et si mes examens de septembre se passent bien, j'y intègre l'équipe définitivement. 16 semaines de stage ont suffi pour confirmer que c'est l'environnement où je veux progresser. L'automatisation via scripts et agents IA, c'est là que le métier va et je compte bien y être.</p>
+          </div>
+          <div class="conclu-quote">
+            <p data-fill>« Ce ne sont pas les plus forts qui survivent, ni les plus intelligents, mais ceux qui s'adaptent le mieux au changement. »<br>
+              <strong>Darwin</strong></p>
+          </div>
+        </div>
+        <div class="page-nav">
+          <button class="btn" onclick="goTo(4)">← Axe 2</button>
+          <span style="font-size:0.72rem;color:var(--muted2);letter-spacing:0.06em;">Fin du portfolio ✓</span>
         </div>
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">A2</div>
-        <div>
-          <h3 data-fill>[Titre de l'annexe 2]</h3>
-          <p class="body-text" data-fill>Description de la preuve.</p>
-        </div>
+      <div class="col-photo">
+        <img src="photo-conclusion.jpeg" alt="Photo conclusion" class="photo-side">
       </div>
-      <div class="expertise-item">
-        <div class="expertise-num">A3</div>
-        <div>
-          <h3 data-fill>[Titre de l'annexe 3]</h3>
-          <p class="body-text" data-fill>Description de la preuve.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="page-nav">
-      <button class="btn" onclick="goTo(5)">← Conclusion</button>
-      <span style="font-size:0.72rem;color:var(--muted2);letter-spacing:0.06em;">Fin du portfolio ✓</span>
     </div>
   </section>
 
@@ -557,19 +494,6 @@ function goTo(i) {
   pages.forEach((p,idx) => p.classList.toggle('active', idx===i));
   navBtns.forEach((b,idx) => b.classList.toggle('active', idx===i));
   document.getElementById('mainContent').scrollTo({top:0,behavior:'instant'});
-}
-
-function loadPhoto(input) {
-  if (!input.files || !input.files[0]) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const box = input.closest('.photo-box');
-    let img = box.querySelector('img');
-    if (!img) { img = document.createElement('img'); box.appendChild(img); }
-    img.src = e.target.result;
-    box.querySelectorAll('svg, span').forEach(el => el.style.display = 'none');
-  };
-  reader.readAsDataURL(input.files[0]);
 }
 </script>
 </body>
